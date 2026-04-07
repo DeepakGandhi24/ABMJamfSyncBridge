@@ -1,120 +1,131 @@
 // ContentView.swift
-// v2.0 root — NavigationSplitView with environment sidebar on the left
-// and the existing tab content on the right, scoped to the active environment.
+// Root TabView — Dashboard / Devices / Sync / Setup / Export.
+// Tab badges: Sync tab shows live progress badge while sync is running.
 
 import SwiftUI
 
 struct ContentView: View {
-  @EnvironmentObject private var store:     AppStore
-  @EnvironmentObject private var envStore:  EnvironmentStore
-  @ObservedObject         var appEngine:    SyncEngine
-  // Seeded from envStore.initialTab which is set synchronously in buildServices
-  // before this view renders — eliminates the setup→dashboard flash.
-  @State private var selectedTab: Tab
+    @EnvironmentObject private var store: AppStore
+    @State private var selectedTab: Tab = .setup
 
-  init(appEngine: SyncEngine, initialTab: Tab = .setup) {
-    self.appEngine     = appEngine
-    self._selectedTab  = State(initialValue: initialTab)
-  }
-
-  enum Tab: String, CaseIterable {
-    case setup     = "Setup"
-    case sync      = "Sync"
-    case dashboard = "Dashboard"
-    case devices   = "Devices"
-    case export    = "Export"
-
-    var icon: String {
-      switch self {
-      case .setup:     return "gearshape.2.fill"
-      case .sync:      return "arrow.triangle.2.circlepath.circle.fill"
-      case .dashboard: return "chart.bar.xaxis"
-      case .devices:   return "desktopcomputer"
-      case .export:    return "square.and.arrow.up"
-      }
-    }
-  }
-
-  private var syncEnabled: Bool {
-    if store.hasData { return true }
-    switch store.axmAuthStatus  { case .success: return true; default: break }
-    switch store.jamfAuthStatus { case .success: return true; default: break }
-    return false
-  }
-
-  private func isTabAllowed(_ tab: Tab) -> Bool {
-    switch tab {
-    case .setup:                            return true
-    case .sync:                             return store.hasData || syncEnabled
-    case .dashboard, .devices, .export:    return store.hasData
-    }
-  }
-
-  var body: some View {
-    NavigationSplitView {
-      EnvironmentSidebarView()
-        .navigationSplitViewColumnWidth(min: 180, ideal: 210, max: 260)
-    } detail: {
-      VStack(spacing: 0) {
-        AppHeaderBar()
-
-        AppTabBar(
-          tabs:      Tab.allCases,
-          selected:  $selectedTab,
-          isAllowed: isTabAllowed,
-          isRunning: appEngine.isRunning
-        )
-
-        Divider()
-
-        Group {
-          switch selectedTab {
-          case .setup:
-            SetupView(engine: appEngine,
-                      navigateToSync: { selectedTab = .sync })
-          case .sync:
-            if isTabAllowed(.sync) {
-              SyncView(engine: appEngine)
-            } else {
-              LockedTabPlaceholder(
-                reason: "Configure your Apple and Jamf credentials in Setup, then test authentication to unlock Sync."
-              )
-            }
-          case .dashboard:
-            if store.hasData { DashboardView() }
-            else { LockedTabPlaceholder(reason: "Run your first sync to see device statistics and coverage summaries here.") }
-          case .devices:
-            if store.hasData { DevicesView() }
-            else { LockedTabPlaceholder(reason: "Run your first sync to browse, filter, and search all your devices here.") }
-          case .export:
-            if store.hasData { ExportView() }
-            else { LockedTabPlaceholder(reason: "Run your first sync to export your device and coverage data as a CSV file.") }
-          }
+    /// Sync tab is enabled once at least one auth test has succeeded OR there is cached data
+    /// Sync tab is accessible only when there is cached data OR when the user
+    /// has successfully tested at least one auth endpoint this session.
+    /// After wipeCache(), both auth statuses are reset to .idle, so this returns false
+    /// until the user re-tests credentials — enforcing Setup-first on reset.
+    private var syncEnabled: Bool {
+        // hasData: previous sync exists → allow re-sync
+        if store.hasData { return true }
+        // Auth tested this session (not persisted across launches) → allow first sync
+        switch store.axmAuthStatus {
+        case .success: return true
+        default: break
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-
-      }
+        switch store.jamfAuthStatus {
+        case .success: return true
+        default: break
+        }
+        return false
     }
 
+    enum Tab: String, CaseIterable {
+        case setup     = "Setup"
+        case sync      = "Sync"
+        case dashboard = "Dashboard"
+        case devices   = "Devices"
+        case export    = "Export"
 
-
-    .onAppear { }
-    .onChange(of: store.hasData) { _, newHasData in
-      if newHasData, selectedTab == .setup { selectedTab = .dashboard }
-      else if !newHasData { selectedTab = .setup }
+        var icon: String {
+            switch self {
+            case .setup:     return "gearshape.2.fill"
+            case .sync:      return "arrow.triangle.2.circlepath.circle.fill"
+            case .dashboard: return "chart.bar.xaxis"
+            case .devices:   return "desktopcomputer"
+            case .export:    return "square.and.arrow.up"
+            }
+        }
     }
 
-    .onReceive(NotificationCenter.default.publisher(
-      for: NSApplication.willTerminateNotification)) { _ in
-      appEngine.stop()
+    // Shared SyncEngine — created at app level and passed in so tokens can be
+    // invalidated on app quit.
+    @ObservedObject var appEngine: SyncEngine
+
+    // Which tabs are unlocked
+    private func isTabAllowed(_ tab: Tab) -> Bool {
+        switch tab {
+        case .setup:     return true
+        case .sync:      return syncEnabled
+        case .dashboard, .devices, .export: return store.hasData
+        }
     }
-    // Blocking migration overlay — shown only on first v1→v2 launch
-    .overlay {
-      if envStore.isMigrating {
-        MigrationOverlayView(status: envStore.migrationStatus)
-      }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            AppHeaderBar()
+
+            // Custom tab bar replaces native TabView entirely.
+            // SwiftUI's TabView is backed by NSTabView (AppKit). On macOS 15/26,
+            // the AppKit sendAction that fires on every tab click re-evaluates ALL
+            // .tabItem closures and triggers simultaneous layout of all tab content
+            // views, which AttributeGraph cannot resolve when views observe different
+            // ObservableObjects (engine vs store). The custom bar is pure SwiftUI —
+            // no NSTabView, no .tabItem, no AppKit sendAction involved.
+            AppTabBar(
+                tabs: Tab.allCases,
+                selected: $selectedTab,
+                isAllowed: isTabAllowed,
+                isRunning: appEngine.isRunning
+            )
+
+            Divider()
+
+            // Content area — only the selected tab is in the view tree.
+            // ZStack-with-opacity is intentionally avoided; pure if/else means
+            // unselected views are fully deallocated, preventing background
+            // @ObservedObject updates from triggering off-screen renders.
+            Group {
+                switch selectedTab {
+                case .setup:
+                    SetupView(engine: appEngine,
+                              navigateToSync: { selectedTab = .sync })
+                case .sync:
+                    if isTabAllowed(.sync) {
+                        SyncView(engine: appEngine)
+                    } else {
+                        LockedTabPlaceholder(
+                            reason: store.hasData
+                                ? "Complete your credential setup in Setup to run a sync."
+                                : "Configure your Apple and Jamf credentials in Setup, then test authentication to unlock this tab."
+                        )
+                    }
+                case .dashboard:
+                    if store.hasData { DashboardView() }
+                    else { LockedTabPlaceholder(reason: "Run your first sync to see device statistics and coverage summaries here.") }
+                case .devices:
+                    if store.hasData { DevicesView() }
+                    else { LockedTabPlaceholder(reason: "Run your first sync to browse, filter, and search all your devices here.") }
+                case .export:
+                    if store.hasData { ExportView() }
+                    else { LockedTabPlaceholder(reason: "Run your first sync to export your device and coverage data as a CSV file.") }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .onAppear {
+            selectedTab = store.hasData ? .dashboard : .setup
+        }
+        .onChange(of: store.hasData) { _, newHasData in
+            if newHasData {
+                if selectedTab == .setup { selectedTab = .dashboard }
+            } else {
+                selectedTab = .setup
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(
+            for: NSApplication.willTerminateNotification)) { _ in
+            appEngine.stop()
+        }
     }
-  }
 }
 
 // MARK: - Reusable label with info popover

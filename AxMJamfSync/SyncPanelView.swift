@@ -17,8 +17,7 @@ struct SyncView: View {
     @ObservedObject  var engine: SyncEngine
     @EnvironmentObject private var store: AppStore
     @EnvironmentObject private var prefs: AppPreferences
-    // Use the engine's per-environment log — not the shared singleton.
-    private var log: LogService { engine.log }
+    @ObservedObject  private var log = LogService.shared
 
     var body: some View {
         VStack(spacing: 0) {
