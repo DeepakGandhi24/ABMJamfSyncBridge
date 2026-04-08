@@ -58,7 +58,7 @@
 		A023 /* EnvironmentSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSidebarView.swift; sourceTree = "<group>"; };
 		A024 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CEC1B53C2F5CB1AF00566E8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		PROD /* AxM Jamf Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AxM Jamf Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		PROD /* ABMJamfSyncBridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABMJamfSyncBridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 		GRP_PROD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				PROD /* AxM Jamf Sync.app */,
+				PROD /* ABMJamfSyncBridge.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			);
 			name = ABMJamfSyncBridge;
 			productName = "AxM Jamf Sync";
-			productReference = PROD /* AxM Jamf Sync.app */;
+			productReference = PROD /* ABMJamfSyncBridge.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -345,7 +345,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.deepakgandhi.abmjamfsyncbridge;
-				PRODUCT_NAME = "AxM Jamf Sync";
+				PRODUCT_NAME = ABMJamfSyncBridge;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -380,7 +380,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.deepakgandhi.abmjamfsyncbridge;
-				PRODUCT_NAME = "AxM Jamf Sync";
+				PRODUCT_NAME = ABMJamfSyncBridge;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
