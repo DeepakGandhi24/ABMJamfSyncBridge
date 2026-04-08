@@ -625,7 +625,7 @@ struct DeviceDetailPanel: View {
 
                                 HStack(spacing: 4) {
                                     Image(systemName: "info.circle").font(.caption).foregroundStyle(.secondary)
-                                    .help("This device exists in Apple Business/School Manager but has never been enrolled into Jamf Pro — it has no Jamf record yet")
+                                    .help("This device exists in Apple Business Manager or Apple School Manager but has not been enrolled into Jamf Pro yet.")
                                     Text("Coverage will be fetched on the next sync run.")
                                         .font(.caption).foregroundStyle(.secondary)
                                 }

@@ -590,7 +590,7 @@ extension ExportColumn {
     static let defaultColumns: [ExportColumn] = [
         .init(id: "serialNumber",        label: "Serial Number",         enabled: true),
         .init(id: "deviceSource",        label: "Device Source",         enabled: true),
-        .init(id: "axmDeviceStatus",     label: "AxM Device Status",     enabled: true),
+        .init(id: "axmDeviceStatus",     label: "ABM/ASM Device Status", enabled: true),
         .init(id: "axmCoverageStatus",   label: "Coverage Status",       enabled: true),
         .init(id: "axmCoverageEndDate",  label: "Coverage End Date",     enabled: true),
         .init(id: "axmAgreementNumber",  label: "AppleCare Agreement #", enabled: true),

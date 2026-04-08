@@ -58,7 +58,7 @@
 		A023 /* EnvironmentSidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentSidebarView.swift; sourceTree = "<group>"; };
 		A024 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		CEC1B53C2F5CB1AF00566E8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		PROD /* AxMJamfSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AxMJamfSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		PROD /* AxM Jamf Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AxM Jamf Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +75,7 @@
 		GRP_PROD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				PROD /* AxMJamfSync.app */,
+				PROD /* AxM Jamf Sync.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,12 +83,12 @@
 		GRP_ROOT = {
 			isa = PBXGroup;
 			children = (
-				GRP_SRC /* AxMJamfSync */,
+				GRP_SRC /* ABMJamfSyncBridge */,
 				GRP_PROD /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		GRP_SRC /* AxMJamfSync */ = {
+		GRP_SRC /* ABMJamfSyncBridge */ = {
 			isa = PBXGroup;
 			children = (
 				A001 /* AxMJamfSyncApp.swift */,
@@ -117,15 +117,15 @@
 				A024 /* PrivacyInfo.xcprivacy */,
 				CEC1B53C2F5CB1AF00566E8D /* Assets.xcassets */,
 			);
-			path = AxMJamfSync;
+			path = ABMJamfSyncBridge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		TGT1 /* AxMJamfSync */ = {
+		TGT1 /* ABMJamfSyncBridge */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CFG_LIST /* Build configuration list for PBXNativeTarget "AxMJamfSync" */;
+			buildConfigurationList = CFG_LIST /* Build configuration list for PBXNativeTarget "ABMJamfSyncBridge" */;
 			buildPhases = (
 				SRC1 /* Sources */,
 				FRM1 /* Frameworks */,
@@ -135,9 +135,9 @@
 			);
 			dependencies = (
 			);
-			name = AxMJamfSync;
+			name = ABMJamfSyncBridge;
 			productName = "AxM Jamf Sync";
-			productReference = PROD /* AxMJamfSync.app */;
+			productReference = PROD /* AxM Jamf Sync.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -148,14 +148,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					TGT1 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = PROJ_CFG_LIST /* Build configuration list for PBXProject "AxMJamfSync" */;
+			buildConfigurationList = PROJ_CFG_LIST /* Build configuration list for PBXProject "ABMJamfSyncBridge" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -168,7 +168,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				TGT1 /* AxMJamfSync */,
+				TGT1 /* ABMJamfSyncBridge */,
 			);
 		};
 /* End PBXProject section */
@@ -221,6 +221,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -273,6 +274,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -320,19 +322,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = AxMJamfSync/AxMJamfSync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ABMJamfSyncBridge/AxMJamfSync.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 26RSJSGVZA;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = AxMJamfSync/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AxM Jamf Sync";
-				INFOPLIST_KEY_CFBundleName = "AxM Jamf Sync";
+				INFOPLIST_FILE = ABMJamfSyncBridge/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ABM JAMF Sync Bridge";
+				INFOPLIST_KEY_CFBundleName = "ABM Jamf Sync Bridge";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -340,8 +344,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.karthikmac.axmjamfsync;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deepakgandhi.abmjamfsyncbridge;
 				PRODUCT_NAME = "AxM Jamf Sync";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -352,19 +357,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = AxMJamfSync/AxMJamfSync.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ABMJamfSyncBridge/AxMJamfSync.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 26RSJSGVZA;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = AxMJamfSync/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "AxM Jamf Sync";
-				INFOPLIST_KEY_CFBundleName = "AxM Jamf Sync";
+				INFOPLIST_FILE = ABMJamfSyncBridge/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ABM JAMF Sync Bridge";
+				INFOPLIST_KEY_CFBundleName = "ABM Jamf Sync Bridge";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -372,8 +379,9 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.karthikmac.axmjamfsync;
+				PRODUCT_BUNDLE_IDENTIFIER = com.deepakgandhi.abmjamfsyncbridge;
 				PRODUCT_NAME = "AxM Jamf Sync";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -382,7 +390,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CFG_LIST /* Build configuration list for PBXNativeTarget "AxMJamfSync" */ = {
+		CFG_LIST /* Build configuration list for PBXNativeTarget "ABMJamfSyncBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				TGT_CFG_DEBUG /* Debug */,
@@ -391,7 +399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		PROJ_CFG_LIST /* Build configuration list for PBXProject "AxMJamfSync" */ = {
+		PROJ_CFG_LIST /* Build configuration list for PBXProject "ABMJamfSyncBridge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CFG_DEBUG /* Debug */,

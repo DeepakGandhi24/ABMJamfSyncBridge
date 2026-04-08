@@ -336,10 +336,7 @@ struct AppHeaderBar: View {
     @State private var showAbout = false
 
     private var appTitle: String {
-        switch store.axmCredentials.scope {
-        case .business: return "ABM Jamf Sync"
-        case .school:   return "ASM Jamf Sync"
-        }
+        "ABM Jamf Sync Bridge"
     }
 
     var body: some View {
@@ -385,7 +382,7 @@ struct AboutPopover: View {
                     .resizable().frame(width: 48, height: 48)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("AxM Jamf Sync")
+                    Text("ABM Jamf Sync Bridge")
                         .font(.headline)
                     Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")")
                         .font(.caption).foregroundStyle(.secondary)
@@ -401,8 +398,8 @@ struct AboutPopover: View {
 
             HStack(spacing: 4) {
                 Text("Developed by").font(.caption).foregroundStyle(.secondary)
-                Link("Karthikeyan Marappan",
-                     destination: URL(string: "https://www.linkedin.com/in/bewithkarthi/")!)
+                Link("Deepak Gandhi",
+                     destination: URL(string: "https://www.linkedin.com/in/deepak-g-61249511b/")!)
                     .font(.caption)
             }
         }

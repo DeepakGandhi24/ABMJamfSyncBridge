@@ -242,7 +242,7 @@ struct ExportView: View {
 
     private func defaultFilename() -> String {
         let date = ISO8601DateFormatter().string(from: Date()).prefix(10)
-        return "device_report_\(selectedPreset.id)_\(date)"
+        return "abm_jamf_sync_bridge_\(selectedPreset.id)_\(date)"
     }
 }
 

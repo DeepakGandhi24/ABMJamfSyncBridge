@@ -206,7 +206,7 @@ final class PersistenceController: Sendable {
         }
         return FileManager.default
             .urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("AxM Jamf Sync/environments", isDirectory: true)
+            .appendingPathComponent("ABM Jamf Sync Bridge/environments", isDirectory: true)
     }()
 
     /// Internal init for a specific store URL.
@@ -534,5 +534,5 @@ extension CDSyncRun {
 }
 
 extension Notification.Name {
-    static let persistenceLoadFailed = Notification.Name("com.karthikmac.axmjamfsync.persistenceLoadFailed")
+    static let persistenceLoadFailed = Notification.Name("com.deepakgandhi.abmjamfsyncbridge.persistenceLoadFailed")
 }

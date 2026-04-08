@@ -1,6 +1,6 @@
-// AxMJamfSyncApp.swift
+// ABMJamfSyncBridgeApp.swift
 // @main entry point — v2.0 multi-environment.
-// © 2026 Karthikeyan Marappan. All rights reserved.
+// © 2026 Deepak Gandhi. All rights reserved.
 //
 // EnvironmentStore owns the active AppStore and SyncEngine as @Published properties.
 // When the user switches environments, EnvironmentStore rebuilds those services and
@@ -16,14 +16,14 @@ import CoreData
 import AppKit
 
 @main
-struct AxMJamfSyncApp: App {
+struct ABMJamfSyncBridgeApp: App {
 
   @StateObject private var envStore = EnvironmentStore()
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
   private var logDirURL: URL {
     FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask)[0]
-      .appendingPathComponent("Logs/AxMJamfSync/environments")
+    .appendingPathComponent("Logs/ABMJamfSyncBridge/environments")
   }
   private var logFileURL: URL {
     guard let envId = envStore.activeEnvironmentId else {
@@ -53,28 +53,28 @@ struct AxMJamfSyncApp: App {
     .commands {
       CommandGroup(replacing: .newItem) {}
       CommandGroup(replacing: .appInfo) {
-        Button("About AxMJamfSync") {
+          Button("About ABM Jamf Sync Bridge") {
           let credits = NSMutableAttributedString(
             string: "Developed by ",
             attributes: [.font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)]
           )
           credits.append(NSAttributedString(
-            string: "Karthikeyan Marappan",
+            string: "Deepak Gandhi",
             attributes: [
               .font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize),
-              .link: URL(string: "https://www.linkedin.com/in/bewithkarthi/")!
+              .link: URL(string: "https://www.linkedin.com/in/deepak-g-61249511b/")!
             ]
           ))
           NSApplication.shared.orderFrontStandardAboutPanel(options: [
-            .applicationName: "AxMJamfSync",
+            .applicationName: "ABM Jamf Sync Bridge",
             .credits:         credits
           ])
         }
       }
       SidebarCommands()
       CommandGroup(replacing: .help) {
-        Button("AxM Jamf Sync Help") {
-          NSWorkspace.shared.open(URL(string: "https://github.com/karthikeyan-mac/AxMJamfSync")!)
+          Button("ABM Jamf Sync Bridge Help") {
+              NSWorkspace.shared.open(URL(string: "https://github.com/deepakgandhi24/ABMJamfSyncBridge")!)
         }
         .keyboardShortcut("?", modifiers: .command)
         Divider()

@@ -1,7 +1,7 @@
 // SetupView.swift
 // Setup tab — credential configuration for ABM/ASM and Jamf Pro.
 //
-// Scope picker: ABM / ASM toggle. Locked (disabled) when AxM-sourced data exists in CoreData
+// Scope picker: ABM / ASM toggle. Locked (disabled) when Apple-sourced data exists in CoreData
 //   (axmDeviceId != nil). Switching loads the matching Keychain credentials.
 // Jamf page size: slider 100…2000 step 100, default 1000. Saved to Keychain.
 // Auth test buttons: validate credentials before sync. Status shown inline.
@@ -28,7 +28,7 @@ struct SetupView: View {
             VStack(alignment: .leading, spacing: 20) {
 
                 // ── Subtitle only — app name already shown in AppHeaderBar ──
-                Text("Configure your Apple and Jamf credentials. All secrets are stored securely in the macOS Keychain.")
+            Text("Configure your Apple and Jamf Pro credentials. All secrets are stored securely in the macOS Keychain.")
                     .font(.callout).foregroundStyle(.secondary)
                 .padding(.horizontal, 24).padding(.top, 16)
 
@@ -186,7 +186,7 @@ struct AxMCredentialsPanel: View {
                 info: InfoContent(
                     icon:    "person.badge.key.fill",
                     title:   "Apple API Client ID",
-                    summary: "Your API username from Apple Business or School Manager.",
+                    summary: "Your API client identifier from Apple Business Manager or Apple School Manager.",
                     bullets: [
                         "Find it in \(scopeAbbrev) → Settings → API → select your API key.",
                         "Starts with BUSINESSAPI… (ABM) or SCHOOLAPI… (ASM).",
@@ -680,7 +680,7 @@ struct CacheSettingsPanel: View {
                         info: InfoContent(
                             icon:    "clock.arrow.2.circlepath",
                             title:   "Device Cache Duration",
-                            summary: "How many days the downloaded device list stays valid before the next sync re-fetches it from Apple and Jamf.",
+                            summary: "How many days the downloaded device list stays valid before the next sync re-fetches it from Apple Business Manager / Apple School Manager and Jamf Pro.",
                             bullets: [
                                 "Set to 0 to always re-download the full device list on every sync.",
                                 "Higher values speed up syncs by skipping the device download step when the data is still fresh.",

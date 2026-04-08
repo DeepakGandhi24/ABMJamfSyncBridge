@@ -1,7 +1,7 @@
 // DashboardView.swift
 // Dashboard tab — live summary tiles and ring chart.
 //
-// Tiles: Total / AxM-Only / Jamf-Only / In Both / In Warranty / Out of Warranty / No Coverage.
+// Tiles: Total / ABM-Only or ASM-Only / Jamf-Only / In Both / In Warranty / Out of Warranty / No Coverage.
 // Ring chart: proportional arcs for coverage status. Animates on data change.
 // Stats computed by AppStore.recomputeStats() (single O(n) pass).
 
@@ -41,13 +41,13 @@ struct DashboardView: View {
                     StatCard(title: "In Both",         value: "\(s.both)",    icon: "checkmark.circle.fill",   color: .green,
                            tooltip: InfoContent(
                                icon: "checkmark.circle.fill", title: "In Both",
-                               summary: "Devices enrolled in Apple Business/School Manager AND present in Jamf Pro.",
+                summary: "Devices enrolled in Apple Business Manager or Apple School Manager and present in Jamf Pro.",
                                bullets: ["These are fully managed devices — Apple has them registered and Jamf tracks them.",
                                          "Only devices In Both can have warranty dates written back to Jamf."]))
                     StatCard(title: store.axmCredentials.scope == .school ? "ASM Only" : "ABM Only",        value: "\(s.axmOnly)", icon: "applelogo",               color: .blue,
                            tooltip: InfoContent(
                                icon: "applelogo", title: store.axmCredentials.scope == .school ? "ASM Only" : "ABM Only",
-                               summary: "Devices registered in Apple Business/School Manager but not yet enrolled in Jamf Pro.",
+                               summary: "Devices registered in Apple Business Manager or Apple School Manager but not yet enrolled in Jamf Pro.",
                                bullets: ["These may be new devices awaiting Jamf enrollment, or devices removed from Jamf but still in Apple's system.",
                                          "Warranty coverage can still be fetched for these devices, but dates cannot be written to Jamf until they enrol."]))
                     StatCard(title: "Jamf Only",       value: "\(s.jamfOnly)",icon: "server.rack",             color: .orange,
@@ -62,7 +62,7 @@ struct DashboardView: View {
                 // MARK: Three section grid
                 HStack(alignment: .top, spacing: 16) {
 
-                    // --- AxM section ---
+                    // --- Apple Manager section ---
                     CardSection(title: scopeFull, icon: "applelogo") {
                         DashStatRow(label: "Total Devices",  value: s.axmTotal,    color: .primary,
                             tooltip: InfoContent(icon: "applelogo", title: "Total in Apple Manager",

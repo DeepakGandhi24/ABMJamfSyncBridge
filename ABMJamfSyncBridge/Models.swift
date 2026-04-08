@@ -23,7 +23,7 @@ enum DeviceSource: String, CaseIterable, Codable {
     var label: String {
         switch self {
         case .both:     return "In Both"
-        case .axmOnly:  return "AxM Only"
+        case .axmOnly:  return "ABM/ASM Only"
         case .jamfOnly: return "Jamf Only"
         }
     }
@@ -359,7 +359,7 @@ enum SyncPhase: String {
     var displayLabel: String {
         switch self {
         case .idle:       return "Ready"
-        case .axmDevices: return "Fetching AxM Devices…"
+        case .axmDevices: return "Fetching ABM/ASM Devices…"
         case .jamf:       return "Fetching Jamf Computers…"
         case .coverage:   return "Fetching AppleCare Coverage…"
         case .jamfUpdate: return "Jamf Update in progress…"
@@ -402,11 +402,11 @@ extension Device {
                axmCoverageStatus: "ACTIVE", axmCoverageEndDate: "2027-03-01",
                axmCoverageFetchedAt: "2026-03-03T20:07:36Z", axmAgreementNumber: "APP-123456",
                wbStatus: .synced, wbPushedAt: "2026-03-03T20:10:00Z", wbNote: nil,
-               jamfId: "142", jamfName: "MacBook-Pro-KM", jamfManaged: "True",
+               jamfId: "142", jamfName: "MacBook-Pro-DG", jamfManaged: "True",
                jamfModel: "MacBook Pro 15\"", jamfModelIdentifier: "MacBookPro8,2",
                jamfMacAddress: "a4:5e:60:ab:cd:ef", jamfReportDate: "2026-03-01T00:00:00Z",
                jamfLastContact: "2026-03-03T00:00:00Z", jamfLastEnrolled: "2024-06-15T00:00:00Z",
-               jamfWarrantyDate: "2027-03-01", jamfVendor: "Apple", jamfAppleCareId: "APP-123456", jamfOsVersion: "14.5", jamfFileVaultStatus: "ALL_ENCRYPTED", jamfUsername: "karthik.m", jamfDeviceType: "computer", axmRawJson: nil, axmCoverageRawJson: nil),
+               jamfWarrantyDate: "2027-03-01", jamfVendor: "Apple", jamfAppleCareId: "APP-123456", jamfOsVersion: "14.5", jamfFileVaultStatus: "ALL_ENCRYPTED", jamfUsername: "Deepak.G", jamfDeviceType: "computer", axmRawJson: nil, axmCoverageRawJson: nil),
         Device(serialNumber: "FVFXG2Q6Q6LR", deviceSource: .axmOnly,
                axmDeviceId: "FVFXG2Q6Q6LR", axmDeviceStatus: "ACTIVE",
                axmDeviceFetchedAt: "2026-03-03T19:59:36Z", axmPurchaseSource: "APPLE", axmPurchaseSourceId: nil, axmOrderNumber: nil, axmOrderDate: nil,

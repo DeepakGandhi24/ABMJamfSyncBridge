@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.karthikmac.axmjamfsync</string>
+	<string>com.deepakgandhi.abmjamfsyncbridge</string>
 	<key>CFBundleName</key>
-	<string>AxM Jamf Sync</string>
+	<string>ABM Jamf Sync Bridge </string>
 	<key>CFBundleDisplayName</key>
-	<string>AxM Jamf Sync</string>
+	<string>ABM Jamf Sync Bridge </string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CFBundleShortVersionString</key>
@@ -21,22 +21,17 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2026 Karthikeyan Marappan. All rights reserved.</string>
-
-	<!-- Usage description for Keychain (shown in sandbox prompts) -->
+	<string>Copyright © 2026 Deepak Gandhi. All rights reserved.</string>
 	<key>NSKeychainUsageDescription</key>
-	<string>AxM Jamf Sync stores your API credentials securely in the macOS Keychain.</string>
-
-	<!-- Privacy — network usage (for App Store review) -->
+	<string>ABM Jamf Sync Bridge stores your API credentials securely in the macOS Keychain.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 	</dict>
-	<!-- App Store category — required to avoid "No App Category is set" warning -->
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.business</string>
 	<key>NSUserNotificationsUsageDescription</key>
-	<string>AxM Jamf Sync sends a notification when a sync run completes or fails.</string>
+	<string>ABM Jamf Sync Bridge sends a notification when a sync run completes or fails.</string>
 </dict>
 </plist>
