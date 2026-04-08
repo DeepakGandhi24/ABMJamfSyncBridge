@@ -1,5 +1,6 @@
 <div align="center">
-
+Based on original work by Karthikeyan Marappan
+Modified and enhanced by Deepak Gandhi
 # ABM Jamf Sync Bridge
 
 <p align="center">
