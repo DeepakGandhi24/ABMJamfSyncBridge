@@ -1,6 +1,5 @@
 <div align="center">
 
-![icon](docs/screenshots/icon.png)
 # ABM Jamf Sync Bridge
 
 <p align="center">
