@@ -28,11 +28,11 @@
 
 ## What it does
 
-AxM Jamf Sync runs a four-step pipeline on demand:
+ABM Jamf Sync Bridge runs a four-step pipeline on demand:
 
 | Step | What happens |
 |------|-------------|
-| **1 — AxM Devices** | Downloads every device record from your ABM or ASM organisation |
+| **1 — ABM Devices** | Downloads every device record from your ABM or ASM organisation |
 | **2 — Jamf Inventory** | Downloads computers and mobile devices from Jamf Pro |
 | **3 — AppleCare Coverage** | Fetches warranty and AppleCare status from Apple's coverage API |
 | **4 — Jamf Update** | Writes warranty date, AppleCare agreement number, vendor, PO number, and PO date back to each matching Jamf record |
