@@ -57,11 +57,11 @@ Switch environments instantly from the sidebar. One sync runs at a time. Existin
 
 ## Screenshots
 
-![Main Interface](docs/screenshots/SetupUI.png)
-![Sync UI](docs/screenshots/SyncUI.png)
-![Dashboard UI](docs/screenshots/DashboardUI.png)
-![Devices UI](docs/screenshots/DevicesUI.png)
-![Export UI](docs/screenshots/ExportUI.png)
+#![Main Interface](docs/screenshots/SetupUI.png)
+#![Sync UI](docs/screenshots/SyncUI.png)
+#![Dashboard UI](docs/screenshots/DashboardUI.png)
+#![Devices UI](docs/screenshots/DevicesUI.png)
+#![Export UI](docs/screenshots/ExportUI.png)
 
 ---
 
