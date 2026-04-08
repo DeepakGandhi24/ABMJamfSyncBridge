@@ -1,6 +1,8 @@
 <div align="center">
+  
+Based on original work by Karthikeyan Marappan
+Modified and enhanced by Deepak Gandhi
 
-![icon](docs/screenshots/icon.png)
 # ABM Jamf Sync Bridge
 
 <p align="center">
@@ -53,18 +55,6 @@ Each environment has its own:
 - Log file
 
 Switch environments instantly from the sidebar. One sync runs at a time. Existing v1 data migrates automatically into a "Default" environment on first launch — no cache wipe required.
-
----
-
-## Screenshots
-
-![Main Interface](docs/screenshots/SetupUI.png)
-![Sync UI](docs/screenshots/SyncUI.png)
-![Dashboard UI](docs/screenshots/DashboardUI.png)
-![Devices UI](docs/screenshots/DevicesUI.png)
-![Export UI](docs/screenshots/ExportUI.png)
-
----
 
 ## Requirements
 
