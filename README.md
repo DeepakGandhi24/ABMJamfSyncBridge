@@ -1,7 +1,7 @@
 <div align="center">
 
 ![icon](docs/screenshots/icon.png)
-# AxM Jamf Sync
+# ABM Jamf Sync Bridge
 
 <p align="center">
   <a href="#what-it-does">What it does</a> •
