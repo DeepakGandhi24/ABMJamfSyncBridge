@@ -223,5 +223,5 @@ MIT — see [LICENSE](LICENSE)
 **AxM Jamf Sync** is not affiliated with, endorsed by, or sponsored by Jamf Software LLC. Jamf and Jamf Pro are trademarks of Jamf Software LLC.
 
 <div align="center">
-Developed by <a href="https://www.linkedin.com/in/bewithkarthi/">Karthikeyan Marappan</a>
+Developed by <a href="https://www.linkedin.com/in/deepak-g-61249511b/">Deepak Gandhi</a>
 </div>
