@@ -11,7 +11,7 @@ Modified and enhanced by Deepak Gandhi
   <a href="#installation">Installation</a> •
   <a href="#quick-start">Quick Start</a> •
   <a href="#tabs-overview">Tabs Overview</a> •
-  <a href="https://github.com/karthikeyan-mac/AxMJamfSync/wiki">Wiki</a> •
+  <a href="https://github.com/karthikeyan-mac/ABMJamfSyncBridge/wiki">Wiki</a> •
   <a href="#license">License</a>
 </p>
 
@@ -75,16 +75,16 @@ This app was developed with the help of AI agents. Please test thoroughly before
 
 ### Option A — Download release (recommended)
 
-1. Download `AxMJamfSync.dmg` from the [Releases](../../releases) page
-2. Open the DMG and drag **AxM Jamf Sync** to Applications
+1. Download `ABMJamfSync.dmg` from the [Releases](../../releases) page
+2. Open the DMG and drag **ABM Jamf Sync** to Applications
 3. Launch — it is signed and notarized, Gatekeeper opens it without warnings
 
 ### Option B — Build from source
 
 ```bash
-git clone https://github.com/karthikeyan-mac/AxMJamfSync.git
-cd AxMJamfSync
-open AxMJamfSync.xcodeproj
+git clone https://github.com/karthikeyan-mac/ABMJamfSync.git
+cd ABMJamfSync
+open ABMJamfSync.xcodeproj
 ```
 
 Select your team in **Signing & Capabilities**, then build with **⌘B**.
@@ -106,7 +106,7 @@ Select your team in **Signing & Capabilities**, then build with **⌘B**.
 2. Create a **Role** with: Read Computers, Read Mobile Devices, Update Computers, Update Mobile Devices
 3. Create a **Client**, assign the role, generate a **Client Secret**
 
-### 3 — Configure AxM Jamf Sync
+### 3 — Configure ABM Jamf Sync
 
 1. Launch the app — your setup opens in the sidebar as **Default**
 2. In **Setup → Apple Manager**, enter your Client ID and Key ID, load your `.pem` file
@@ -126,7 +126,7 @@ Click **+** in the sidebar, give it a name, and configure separate credentials i
 
 ## Documentation
 
-Full guides: [Project Wiki](https://github.com/karthikeyan-mac/AxMJamfSync/wiki)
+Full guides: [Project Wiki](https://github.com/karthikeyan-mac/ABMJamfSync/wiki)
 
 ---
 
@@ -148,7 +148,7 @@ Full guides: [Project Wiki](https://github.com/karthikeyan-mac/AxMJamfSync/wiki)
 - All credentials stored in the **macOS Keychain** (`kSecAttrAccessibleWhenUnlockedThisDeviceOnly`), namespaced per environment
 - TLS certificate validation enforced on every connection
 - JWT client assertions use ES256 with a 10-minute lifetime
-- Log files written to `~/Library/Logs/AxMJamfSync/` with `0600` permissions
+- Log files written to `~/Library/Logs/ABMJamfSync/` with `0600` permissions
 - Fully **App Sandboxed**
 
 ---
@@ -175,14 +175,14 @@ Full guides: [Project Wiki](https://github.com/karthikeyan-mac/AxMJamfSync/wiki)
 | In Both count is 0 | Run a full sync (Step 1 + Step 2) so devices can be matched by serial |
 | App won't open (Gatekeeper) | Right-click → Open on first launch, or download the signed release |
 
-Full log: **Help → Open Sync Log in Console** or `~/Library/Logs/AxMJamfSync/`
+Full log: **Help → Open Sync Log in Console** or `~/Library/Logs/ABMJamfSyncBridge/`
 
 ---
 
 ## Project structure
 
 ```
-AxMJamfSync/
+ABMJamfSyncBridge/
 ├── Models.swift                  — Data types, enums, Device struct
 ├── AppStore.swift                — @MainActor state, CoreData CRUD, filtering
 ├── AppPreferences.swift          — UserDefaults (env-namespaced in v2)
